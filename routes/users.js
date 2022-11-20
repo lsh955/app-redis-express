@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 /**
  * 데이터 저장하기
  */
-router.post('/', function(req, res, next) {
+router.post('/', async (req, res) => {
   redisClient.set("test", "Hi")
 
   res.json("등록완료")
