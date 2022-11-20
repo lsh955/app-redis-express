@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-const redis = require('./../config/redis')
-const redisClient = redis.v4;
+const {redisClient} = require('./../config/redis')
+const redis = redisClient.v4;
 
 /**
  * 데이터 가져오기
  */
 router.get('/', async (req, res) => {
-  const result = await redisClient.get("test")
+  const result = await redis.get("test")
 
   res.json(result)
 });
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
  * 데이터 저장하기
  */
 router.post('/', async (req, res) => {
-  redisClient.set("test", "Hi")
+  redis.set("test", "Hi")
 
   res.json("등록완료")
 });
