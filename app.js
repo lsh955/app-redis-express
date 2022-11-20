@@ -7,7 +7,20 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const redisClient = require('./config/redis')
+const session = require("express-session");
+const RedisStore = require("connect-redis")(session);
+
 var app = express();
+
+app.use(
+    session({
+      store: new RedisStore({ client: redisClient }),
+      saveUninitialized: false,
+      secret: "keyboard cat",
+      resave: false,
+    })
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
