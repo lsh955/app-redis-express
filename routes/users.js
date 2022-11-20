@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const {redisClient} = require('./../config/redis')
+const redisClient = require('./../config/redis')
 const redis = redisClient.v4;
 
 /**
