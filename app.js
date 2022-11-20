@@ -13,6 +13,7 @@ const RedisStore = require("connect-redis")(session);
 
 var app = express();
 
+// session
 app.use(
     session({
       store: new RedisStore({ client: redisClient }),
