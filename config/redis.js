@@ -1,7 +1,13 @@
 const redis = require('redis');
 
-//* Redis 연결
-const redisClient = redis.createClient({legacyMode: true}); // legacy 모드 반드시 설정 !!
+// Redis 연결
+// TODO : 추후 환경변수에 빼서 관리할 것.
+const redisClient = redis.createClient({
+    host : 'localhost',
+    port : 6379,
+    db : 0,
+    legacyMode: true
+});
 
 redisClient.on('connect', () => {
     console.info('Redis connected!');
