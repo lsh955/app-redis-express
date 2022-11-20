@@ -20,4 +20,4 @@ redisClient.on('error', (err) => {
 
 redisClient.connect().then(); // redis v4 연결 (비동기)
 
-module.exports = {redisClient, redisInfo};
+module.exports = redisClient;
